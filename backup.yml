@@ -1,0 +1,29 @@
+---
+- name: show run
+  vars:
+    ansible_connection: network_cli
+  gather_facts: false
+  hosts: all
+  become: yes
+  become_method: enable
+  tasks:
+    - name: show run
+      ios_command:
+        commands:
+          - show run
+      register: config
+    - name: get timestamp
+      command: date +%Y%m%d-%H-%M
+      register: timestamp
+      run_once: true
+    - name: get time for directory
+      command: date +%Y%m%d
+      register: timedir
+      run_once: true
+    - name: create directory
+      command: mkdir -p {{ timedir.stdout }}
+      run_once: true
+    - name: guardar la salida show_run
+      copy:
+        content: "{{ config.stdout[0] }}"
+        dest: "/etc/ansible/AnaSeguros/{{ timedir.stdout }}/{{ inventory_hostname }}_show_run_{{ timestamp.stdout }}.txt"
