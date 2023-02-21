@@ -21,7 +21,7 @@
       register: timedir
       run_once: true
     - name: create directory
-      command: mkdir -p {{ timedir.stdout }}
+      command: mkdir -p /etc/ansible/AnaSeguros/Respaldos/{{ timedir.stdout }}
       run_once: true
     - name: guardar la salida show_run
       copy:
