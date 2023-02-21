@@ -9,7 +9,7 @@
   tasks:
     - name: Push config
       ios_config:
-        src: "/etc/ansible/AnaSeguros/Respaldos/DCSwitch.txt"
+        src: "/etc/ansible/AnaSeguros/Respaldos/20230221/DCSwitch.txt"
     - name: Save running
       ios_config:
         save_when: modified
