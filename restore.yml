@@ -1,0 +1,16 @@
+---
+- name: Push configuration to switch
+  vars:
+    ansible_connection: network_cli
+  gather_facts: false
+  hosts: all
+  become: yes
+  become_method: enable
+  tasks:
+    - name: Push config
+      ios_config:
+        src: "/etc/ansible/UseCases/BackupandRestore/20230209/sw1_show_run_20230209-17-45.txt"
+    - name: Save running
+      ios_config:
+        save_when: modified
+
