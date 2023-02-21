@@ -26,4 +26,4 @@
     - name: guardar la salida show_run
       copy:
         content: "{{ config.stdout[0] }}"
-        dest: "/etc/ansible/AnaSeguros/{{ timedir.stdout }}/{{ inventory_hostname }}_show_run_{{ timestamp.stdout }}.txt"
+        dest: "/etc/ansible/AnaSeguros/Respaldos/{{ timedir.stdout }}/{{ inventory_hostname }}_show_run_{{ timestamp.stdout }}.txt"
