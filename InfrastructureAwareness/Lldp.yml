@@ -1,0 +1,16 @@
+---
+- name: LLDP
+  connection: network_cli
+  hosts: all
+  gather_facts: false
+  become: yes
+  become_method: enable
+  tasks:
+    - name: show run
+      ios_command:
+        commands:
+          - show lldp neighbors detail | include Chassis
+      register: config
+    - name: print output
+      debug:
+        var: config.stdout_lines[0]

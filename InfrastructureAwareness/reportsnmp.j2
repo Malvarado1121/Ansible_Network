@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>Hostname</th>
+            <th>Sysdescr</th>
+            <th>Sysname</th>
+            <th>Sysobjectid</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for network_switch in groups['all'] %}
+        <tr>
+
+            <td {% if hostvars[network_switch]['ansible_host'] == "" %}style="background-color: rgb(50, 0, 0);"{% endif %}>{{hostvars[network_switch]['ansible_host']}}</td>
+            <td {% if hostvars[network_switch]['ansible_sysdescr'] == "" %}style="background-color: rgb(50, 0, 0);"{% endif %}>{{hostvars[network_switch]['ansible_sysdescr']}}</td>
+            <td {% if hostvars[network_switch]['ansible_sysname'] == "" %}style="background-color: rgb(50, 0, 0);"{% endif %}>{{hostvars[network_switch]['ansible_sysname']}}</td>
+            <td {% if hostvars[network_switch]['ansible_sysobjectid'] == "" %}style="background-color: rgb(50, 0, 0);"{% endif %}>{{hostvars[network_switch]['ansible_sysobjectid']}}</td>
+             
+        </tr>         
+{% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

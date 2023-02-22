@@ -1,0 +1,15 @@
+---
+- name: Test Ios Facts
+  connection: network_cli
+  hosts: all
+  tasks:
+    - name: Gathered
+      ios_vlans:
+        state: gathered      
+      register: all_vlans
+    - name: Print all vlans
+      debug:
+        msg: 
+        - "nombre: {{ item.name }}"
+        - "ID:{{ item.vlan_id }}"
+      loop: "{{ all_vlans.gathered }}"
