@@ -5,6 +5,7 @@
   tasks:
     - name: Gathered
       ios_vlans:
+        config:
         state: gathered
       register: all_vlans
     - name: Print all vlans
