@@ -5,12 +5,7 @@
   tasks:
     - name: Gathered
       ios_vlans:
-        config:
-        - name: VLAN30
-          vlan_id: 30
-          state: suspend
-          shutdown: enabled
-        state: merged      
+        state: gathered      
       register: all_vlans
     - name: Print all vlans
       debug:
