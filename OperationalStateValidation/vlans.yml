@@ -4,7 +4,7 @@
   hosts: all
   tasks:
     - name: Gathered
-      cisco.ios.ios_vlans:
+      ios_vlans:
         config:
         state: gathered
       register: all_vlans
