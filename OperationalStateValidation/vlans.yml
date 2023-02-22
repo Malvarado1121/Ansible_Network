@@ -5,7 +5,7 @@
   tasks:
     - name: Gathered
       ios_vlans:
-        state: gathered      
+        state: merged      
       register: all_vlans
     - name: Print all vlans
       debug:
