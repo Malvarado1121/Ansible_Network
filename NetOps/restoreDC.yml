@@ -7,6 +7,20 @@
   become: yes
   become_method: enable
   tasks:
+    - name: Create VLANs
+      ios_vlans:
+        config:
+        - name: Vlan_10DC
+          vlan_id: 10
+          state: active
+          shutdown: disabled
+        - name: Vlan_20DC
+          vlan_id: 20
+          state: active
+          shutdown: enabled
+        - name: Vlan_30DC
+          vlan_id: 30
+        state: merged
     - name: Push config
       ios_config:
         src: "/etc/ansible/AnaSeguros/Respaldos/20230221/DataCenterSwitch.txt"
