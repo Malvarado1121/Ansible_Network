@@ -4,8 +4,7 @@
   hosts: all
   tasks:
     - name: Delete VLANs
-
-      ios.ios_vlans:
+      ios_vlans:
         config:
         - vlan_id: 10
         - vlan_id: 20
