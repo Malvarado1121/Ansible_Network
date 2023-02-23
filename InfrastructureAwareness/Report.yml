@@ -1,7 +1,6 @@
 ---
 - name: Public html report on ansible nginx
   hosts: all
-  gather_facts: yes
   connection: local
   vars:
     file_path: /var/www/html/
@@ -14,9 +13,9 @@
       snmp_facts:
         host: '{{ ansible_host }}'
         version: v2c
-        community: anapublic
+        community: ipcom
       register: all_subset
-   
+
     - name: create HTML report
       template:
         src: reportsnmp.j2
