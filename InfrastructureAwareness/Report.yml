@@ -8,21 +8,18 @@
     - name: Get Timestamp
       command: date +%Y%m%d-%H-%M
       register: timestamp
-
     - name: Get SNMP data
       snmp_facts:
         host: '{{ ansible_host }}'
         version: v2c
         community: ipcom
       register: all_subset
-
     - name: create HTML report
       template:
         src: reportsnmp.j2
         dest: "{{ file_path }}reporte_{{ timestamp.stdout }}.html"
       delegate_to: localhost
       run_once: true
-
     - name: Get report
       debug:
         msg: "Your report is available in http://172.16.132.102/reporte_{{ timestamp.stdout }}.html"
