@@ -9,7 +9,7 @@
       command: date +%Y%m%d-%H-%M
       register: timestamp
     - name: Get SNMP data
-      community.general.snmp_facts:
+      general.snmp_facts:
         host: '{{ ansible_host }}'
         version: v2c
         community: ipcom
